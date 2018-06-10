@@ -59,5 +59,9 @@ public class Roles {
 	public void set_ajout_articles(boolean _ajout_articles) {
 		this._ajout_articles = _ajout_articles;
 	}
+	
+	public String toString() {
+		return "id : "+_id+"   nom : "+_nom+"   ajout users : "+_ajout_users+"   ajout themes : "+_ajout_themes+"   ajout articles : "+_ajout_articles+"   modérateur : "+_moderateur;
+	}
 
 }
