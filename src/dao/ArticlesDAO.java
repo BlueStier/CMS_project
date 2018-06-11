@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import accessBDD.BDD;
 import model.Articles;
+import model.MODEL;
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
  * ou modifier un Article
  * */
@@ -16,7 +18,7 @@ public class ArticlesDAO extends DAO<Articles> {
 
 	/* insert un article dans la bdd */
 	@Override
-	public boolean create(Articles a) {
+	public boolean create(MODEL<?> a) {
 		String titre = a.get_titre();
 		String resume = a.get_resume();
 		String contenu = a.get_contenu();

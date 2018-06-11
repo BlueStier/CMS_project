@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import accessBDD.BDD;
+import model.MODEL;
 import model.Themes;
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
  * ou modifier un theme
@@ -17,7 +18,7 @@ public class ThemesDAO extends DAO<Themes> {
 
 	/** insert un theme dans la bdd **/
 	@Override
-	public boolean create(Themes t) {
+	public boolean create(MODEL<?> t) {
 		String nom = t.get_nom();
 		String path = t.get_path();
 		String str = "insert into theme values(NULL,'" + nom + "','" + path + "')";

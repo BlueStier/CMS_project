@@ -2,7 +2,9 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import accessBDD.BDD;
+import model.MODEL;
 import model.Roles;
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
  * ou modifier un role
@@ -16,12 +18,12 @@ public class RolesDAO extends DAO<Roles> {
 
 	/* insert un nouveau role dans la bdd */
 	@Override
-	public boolean create(Roles r) {
+	public boolean create(MODEL<?> r) {
 		String nom = r.get_nom();
 		boolean ajout_users = r.is_ajout_users();
 		boolean ajout_themes = r.is_ajout_themes();
 		boolean ajout_articles = r.is_ajout_articles();
-		boolean moderateur = r.is_moderateur();
+		boolean moderateur = r.is_mod();
 		String str = "insert into roles values(NULL,'" + nom + "'," + ajout_users + "," + ajout_themes + ","
 				+ ajout_articles + "," + moderateur + ")";
 
@@ -53,7 +55,7 @@ public class RolesDAO extends DAO<Roles> {
 		int id = r.get_id();
 		String nom = r.get_nom();
 		boolean ajout_users = r.is_ajout_users();
-		boolean moderateur = r.is_moderateur();
+		boolean moderateur = r.is_mod();
 		boolean ajout_themes = r.is_ajout_themes();
 		boolean ajout_articles = r.is_ajout_articles();
 		String str = "update roles set nom='" + nom + "', ajout_users=" + ajout_users + ", ajout_themes=" + ajout_themes
@@ -80,7 +82,7 @@ public class RolesDAO extends DAO<Roles> {
 				r.set_ajout_articles(result.getBoolean("ajout_articles"));
 				r.set_ajout_themes(result.getBoolean("ajout_themes"));
 				r.set_ajout_users(result.getBoolean("ajout_users"));
-				r.set_moderateur(result.getBoolean("moderateur"));
+				r.set_mod(result.getBoolean("moderateur"));
 			}
 		} catch (SQLException e) {
 

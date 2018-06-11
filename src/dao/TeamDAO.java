@@ -2,7 +2,9 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import accessBDD.BDD;
+import model.MODEL;
 import model.Team;
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
  * ou modifier une team
@@ -16,12 +18,14 @@ public class TeamDAO extends DAO<Team> {
 
 	/** insert une team dans la bdd **/
 	@Override
-	public boolean create(Team t) {
+	public boolean create(MODEL<?> t) {
 		String nom = t.get_nom();
 		String pseudo = t.get_pseudo();
 		String mail = t.get_mail();
 		int role = t.get_role().get_id();
-		String str = "insert into team values(NULL,'" + nom + "','" + pseudo + "','" + mail + "'," + role + ")";
+		String mdp = t.get_mail();
+		String str = "insert into team values(NULL,'" + nom + "','" + pseudo + "','" + mail + "'," + role + "'" + mdp
+				+ ")";
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
 			return true;
@@ -51,8 +55,9 @@ public class TeamDAO extends DAO<Team> {
 		String mail = t.get_mail();
 		String pseudo = t.get_pseudo();
 		int role = t.get_role().get_id();
+		String mdp = t.get_mail();
 		String str = "update team set nom='" + nom + "', email='" + mail + "', pseudo='" + pseudo + "', role=" + role
-				+ " where id=" + id;
+				+ ", mdp=" + mdp + " where id=" + id;
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -75,6 +80,7 @@ public class TeamDAO extends DAO<Team> {
 				t.set_pseudo("pseudo");
 				t.set_mail(result.getString("email"));
 				t.set_role(new RolesDAO(new BDD()).find(result.getInt("role")));
+				t.set_mdp(result.getString("mdp"));
 			}
 		} catch (SQLException e) {
 

@@ -1,6 +1,7 @@
 package dao;
 
 import accessBDD.BDD;
+import model.MODEL;
 /*class bstraite qui défini les fonctions de création, de suppression
  * de modification et de recherche
  */
@@ -15,10 +16,10 @@ public abstract class DAO<T> {
 	/**
 	 * Méthode de création
 	 * 
-	 * @param obj
+	 * @param m
 	 * @return boolean
 	 */
-	public abstract boolean create(T obj);
+	public abstract boolean create(MODEL<?> m);
 
 	/**
 	 * Méthode pour effacer

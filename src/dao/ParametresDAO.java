@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import accessBDD.BDD;
+import model.MODEL;
 import model.Parametres;
 
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
@@ -18,7 +19,7 @@ public class ParametresDAO extends DAO<Parametres> {
 
 	/** insert un nouveau parametre dans la bdd **/
 	@Override
-	public boolean create(Parametres p) {
+	public boolean create(MODEL<?> p) {
 		String nom = p.get_nom();
 		int theme = p.get_theme().get_id();
 		String description = p.get_description();

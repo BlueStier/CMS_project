@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import accessBDD.BDD;
 import model.Commentaires;
+import model.MODEL;
 /* class object faisant le lien avec la bdd et permettant de trouver, creer supprimer 
  * ou modifier un commentaire
  * */
@@ -16,9 +18,9 @@ public class CommentairesDAO extends DAO<Commentaires> {
 
 	/* insert un article dans la bdd */
 	@Override
-	public boolean create(Commentaires c) {
+	public boolean create(MODEL<?> c) {
 		String contenu = c.get_contenu();
-		int visiteur = c.get_visiteur().get_id();
+		int visiteur = c.get_visiteurs().get_id();
 		int article = c.get_article().get_id();
 		boolean mod = c.is_mod();
 		String str = "insert into commentaires values(NULL,'" + contenu + "'," + visiteur + "," + article + ",NOW(),"
@@ -51,7 +53,7 @@ public class CommentairesDAO extends DAO<Commentaires> {
 		String contenu = c.get_contenu();
 		boolean mod = c.is_mod();
 		int article = c.get_article().get_id();
-		int visiteur = c.get_visiteur().get_id();
+		int visiteur = c.get_visiteurs().get_id();
 
 		String str = "update commentaires set contenu='" + contenu + "', visiteur=" + visiteur + ", article=" + article
 				+ ", date=NOW(), moderateur=" + mod + " where id=" + id;

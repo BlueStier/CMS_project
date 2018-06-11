@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import accessBDD.BDD;
 import model.Cat;
+import model.MODEL;
 
 /**
  * class object faisant le lien avec la bdd et permettant de trouver, creer
@@ -18,7 +20,7 @@ public class CatDAO extends DAO<Cat> {
 
 	/** insert une categorie dans la bdd **/
 	@Override
-	public boolean create(Cat c) {
+	public boolean create(MODEL<?> c) {
 		String nom = c.get_nom();
 		int ordre = c.get_ordre();
 		String str = "insert into cat values(NULL,'" + nom + "'," + ordre + ")";
