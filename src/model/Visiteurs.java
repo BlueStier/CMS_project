@@ -1,4 +1,9 @@
 package model;
+/* class object representant un commentaires de la bdd 
+ * comprenant son id, son pseudo,et son mail
+ * getters et setters en fonction des variables membres
+ * toString redéfinie
+ * */
 
 public class Visiteurs {
 	private int _id;
@@ -33,5 +38,8 @@ public class Visiteurs {
 		this._id = _id;
 	}
 	
+	public String toString(){
+		return " id : "+_id+" pseudo : "+_pseudo+" mail : "+_mail;
+	}
 
 }

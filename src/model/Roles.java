@@ -1,4 +1,10 @@
 package model;
+/* class object representant un role de la bdd 
+ * comprenant son id, son nom, si il peut aujouter des user,
+ * des articles, des themes et s'il est modérateur
+ * getters et setters en fonction des variables membres
+ * toString redéfinie
+ * */
 
 public class Roles {
 	private int _id;

@@ -1,6 +1,12 @@
 package model;
 
 import java.util.Date;
+/* class object representant un article de la bdd 
+ * comprenant son id, son contenu, la date.
+ * la catégotie de l'article,son résumé, l'auteur
+ * getters et setters en fonction des variables membres
+ * toString redéfinie
+ * */
 
 public class Articles {
 	private int _id;
@@ -8,8 +14,9 @@ public class Articles {
 	private String _resume;
 	private String _contenu;
 	private String _writer;
-	private String _cat;
+	private Cat _cat;	
 	private Date _date;
+	private boolean _commentaires;
 
 	public Articles() {
 
@@ -55,11 +62,11 @@ public class Articles {
 		this._writer = _writer;
 	}
 
-	public String get_cat() {
+	public Cat get_cat() {
 		return _cat;
 	}
 
-	public void set_cat(String _cat) {
+	public void set_cat(Cat _cat) {
 		this._cat = _cat;
 	}
 
@@ -69,6 +76,18 @@ public class Articles {
 
 	public void set_date(Date _date) {
 		this._date = _date;
+	}
+
+	public boolean is_commentaires() {
+		return _commentaires;
+	}
+
+	public void set_commentaires(boolean _commentaires) {
+		this._commentaires = _commentaires;
+	}
+	
+	public String toString() {
+		return "id : "+_id+"   titre : "+_titre+"   résumé : "+_resume+"   contenu : "+_contenu+"   writer : "+_writer+"   \ncat : "+_cat.toString()+"  date : "+_date+"  commentaires :"+_commentaires;
 	}
 
 }

@@ -2,6 +2,12 @@ package model;
 
 import java.util.Date;
 
+/* class object representant un commentaires de la bdd 
+ * comprenant son id, son contenu, s'il est modéré ou non,la date.
+ * fait appel aux objets articles et visiteur
+ * getters et setters en fonction des variables membres
+ * toString redéfinie
+ * */
 public class Commentaires {
 	private int _id;
 	private String _contenu;
@@ -9,8 +15,9 @@ public class Commentaires {
 	private Articles _article;
 	private Date _date;
 	private Visiteurs _visiteur;
-	
-	public Commentaires() {}
+
+	public Commentaires() {
+	}
 
 	public int get_id() {
 		return _id;
@@ -59,6 +66,10 @@ public class Commentaires {
 	public void set_visiteur(Visiteurs _visiteur) {
 		this._visiteur = _visiteur;
 	}
-	
-	
+
+	public String toString() {
+		return "id : " + _id + " contenu : " + _contenu + " modérateur : " + _mod + " date : " + _date + "\narticle : "
+				+ _article.toString() + "\n visiteur :" + _visiteur.toString();
+	}
+
 }

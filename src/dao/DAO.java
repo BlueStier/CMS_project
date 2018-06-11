@@ -1,6 +1,9 @@
 package dao;
 
 import accessBDD.BDD;
+/*class bstraite qui défini les fonctions de création, de suppression
+ * de modification et de recherche
+ */
 
 public abstract class DAO<T> {
 	protected BDD _connection;

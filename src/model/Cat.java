@@ -1,4 +1,9 @@
 package model;
+/* class object representant une catégorie de la bdd 
+ * comprenant son id, son nom, son ordre
+ * getters et setters en fonction des variables membres
+ * toString redéfinie
+ * */
 
 public class Cat {
 	private int _id;
@@ -30,6 +35,10 @@ public class Cat {
 
 	public void set_ordre(int _ordre) {
 		this._ordre = _ordre;
+	}
+
+	public String toString() {
+		return "id  : " + _id + "  nom : " + _nom + "  ordre : " + _ordre;
 	}
 
 }
