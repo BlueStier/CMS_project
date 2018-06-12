@@ -5,6 +5,7 @@ package model;
  * toString redéfinie
  * */
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Parametres extends MODEL<Parametres>{
@@ -287,6 +288,12 @@ public class Parametres extends MODEL<Parametres>{
 	public void set_mdp(String mdp) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

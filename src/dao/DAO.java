@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import accessBDD.BDD;
 import model.MODEL;
 /*class bstraite qui défini les fonctions de création, de suppression
@@ -27,7 +29,7 @@ public abstract class DAO<T> {
 	 * @param obj
 	 * @return boolean
 	 */
-	public abstract boolean delete(T obj);
+	public abstract boolean delete(MODEL<?> obj);
 
 	/**
 	 * Méthode de mise à jour
@@ -35,7 +37,7 @@ public abstract class DAO<T> {
 	 * @param obj
 	 * @return boolean
 	 */
-	public abstract boolean update(T obj);
+	public abstract boolean update(MODEL<?> obj);
 
 	/**
 	 * Méthode de recherche des informations
@@ -44,4 +46,13 @@ public abstract class DAO<T> {
 	 * @return T
 	 */
 	public abstract T find(int id);
+	
+	
+	/**
+	 * Méthode de recherche de tous les objects de la bdd
+	 * 
+	 * @param id
+	 * @return T
+	 */
+	public abstract ArrayList<T> get_all();
 }

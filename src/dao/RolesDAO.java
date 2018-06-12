@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.MODEL;
@@ -38,7 +39,7 @@ public class RolesDAO extends DAO<Roles> {
 
 	/** Supprime un role de la bdd **/
 	@Override
-	public boolean delete(Roles r) {
+	public boolean delete(MODEL<?> r) {
 		int id = r.get_id();
 		String str = "delete from roles where id=" + id;
 		try {
@@ -51,7 +52,7 @@ public class RolesDAO extends DAO<Roles> {
 
 	/** met à jour un role dans la bdd **/
 	@Override
-	public boolean update(Roles r) {
+	public boolean update(MODEL<?> r) {
 		int id = r.get_id();
 		String nom = r.get_nom();
 		boolean ajout_users = r.is_ajout_users();
@@ -88,6 +89,29 @@ public class RolesDAO extends DAO<Roles> {
 
 		}
 		return r;
+	}
+
+	@Override
+	public ArrayList<Roles> get_all() {
+		ArrayList<Roles> liste = new ArrayList<Roles>();
+		String Str = "SELECT * from roles";
+		Roles r = new Roles();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				r.set_id(result.getInt("id"));
+				r.set_nom(result.getString("nom"));
+				r.set_ajout_articles(result.getBoolean("ajout_articles"));
+				r.set_ajout_themes(result.getBoolean("ajout_themes"));
+				r.set_ajout_users(result.getBoolean("ajout_users"));
+				r.set_mod(result.getBoolean("moderateur"));
+				liste.add(r);
+				r = new Roles();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.MODEL;
@@ -32,7 +33,7 @@ public class ThemesDAO extends DAO<Themes> {
 
 	/** supprime un theme de la bdd **/
 	@Override
-	public boolean delete(Themes t) {
+	public boolean delete(MODEL<?> t) {
 		int id = t.get_id();
 		String str = "delete from theme where id=" + id;
 		try {
@@ -45,7 +46,7 @@ public class ThemesDAO extends DAO<Themes> {
 
 	/** met à jour un theme de la bdd **/
 	@Override
-	public boolean update(Themes t) {
+	public boolean update(MODEL<?> t) {
 		int id = t.get_id();
 		String nom = t.get_nom();
 		String path = t.get_path();
@@ -75,6 +76,26 @@ public class ThemesDAO extends DAO<Themes> {
 
 		}
 		return t;
+	}
+
+	@Override
+	public ArrayList<Themes> get_all() {
+		ArrayList<Themes> liste = new ArrayList<Themes>();
+		String Str = "SELECT * from theme";
+		Themes t = new Themes();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				t.set_id(result.getInt("id"));
+				t.set_nom(result.getString("nom"));
+				t.set_path(result.getString("path"));
+				liste.add(t);
+				t = new Themes();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

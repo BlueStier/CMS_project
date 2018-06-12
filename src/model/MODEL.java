@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class MODEL<T> {
@@ -98,5 +99,6 @@ public abstract class MODEL<T> {
 	public abstract String get_mdp();
 
 	public abstract void set_mdp(String mdp);
-
+	
+	public abstract MODEL<?> verify(ArrayList<?> liste, Object o);
 }

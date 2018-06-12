@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.MODEL;
@@ -33,7 +34,7 @@ public class VisiteursDAO extends DAO<Visiteurs> {
 
 	/** Supprime un visiteur de la BDD **/
 	@Override
-	public boolean delete(Visiteurs v) {
+	public boolean delete(MODEL<?> v) {
 		int id = v.get_id();
 		String str = "delete from visiteur where id=" + id;
 		try {
@@ -46,7 +47,7 @@ public class VisiteursDAO extends DAO<Visiteurs> {
 
 	/** met à jour un visiteur de la bdd **/
 	@Override
-	public boolean update(Visiteurs v) {
+	public boolean update(MODEL<?> v) {
 		int id = v.get_id();
 		String pseudo = v.get_pseudo();
 		String mail = v.get_mail();
@@ -78,6 +79,27 @@ public class VisiteursDAO extends DAO<Visiteurs> {
 
 		}
 		return v;
+	}
+
+	@Override
+	public ArrayList<Visiteurs> get_all() {
+		ArrayList<Visiteurs> liste = new ArrayList<Visiteurs>();
+		String Str = "SELECT * from articles";
+		Visiteurs v = new Visiteurs();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				v.set_id(result.getInt("id"));
+				v.set_pseudo(result.getString("pseudo"));
+				v.set_mail(result.getString("email"));
+				v.set_mdp(result.getString("mdp"));
+				liste.add(v);
+				v = new Visiteurs();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

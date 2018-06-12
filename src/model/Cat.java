@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /* class object representant une catégorie de la bdd 
@@ -289,6 +290,12 @@ public class Cat extends MODEL<Cat>{
 	public void set_mdp(String mdp) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

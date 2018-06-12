@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.Commentaires;
@@ -35,7 +36,7 @@ public class CommentairesDAO extends DAO<Commentaires> {
 
 	/** Supprime un commentaire de la bdd **/
 	@Override
-	public boolean delete(Commentaires c) {
+	public boolean delete(MODEL<?> c) {
 		int id = c.get_id();
 		String str = "delete from commentaires where id=" + id;
 		try {
@@ -48,7 +49,7 @@ public class CommentairesDAO extends DAO<Commentaires> {
 
 	/** Modifie un commentaire en bdd **/
 	@Override
-	public boolean update(Commentaires c) {
+	public boolean update(MODEL<?> c) {
 		int id = c.get_id();
 		String contenu = c.get_contenu();
 		boolean mod = c.is_mod();
@@ -89,6 +90,29 @@ public class CommentairesDAO extends DAO<Commentaires> {
 
 		}
 		return com;
+	}
+
+	@Override
+	public ArrayList<Commentaires> get_all() {
+		ArrayList<Commentaires> liste = new ArrayList<Commentaires>();
+		String Str = "SELECT * from commentaires";
+		Commentaires com = new Commentaires();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				com.set_id(result.getInt("id"));
+				com.set_contenu(result.getString("contenu"));
+				com.set_date(result.getDate("date"));
+				com.set_article(new ArticlesDAO(new BDD()).find(result.getInt("article")));
+				com.set_visiteur(new VisiteursDAO(new BDD()).find(result.getInt("visiteur")));
+				com.set_mod(result.getBoolean("mod"));
+				liste.add(com);
+				com = new Commentaires();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

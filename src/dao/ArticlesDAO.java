@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.Articles;
@@ -38,7 +39,7 @@ public class ArticlesDAO extends DAO<Articles> {
 
 	/** supprime un article de la bdd **/
 	@Override
-	public boolean delete(Articles a) {
+	public boolean delete(MODEL<?> a) {
 		int id = a.get_id();
 		String str = "delete from articles where id=" + id;
 		try {
@@ -51,7 +52,7 @@ public class ArticlesDAO extends DAO<Articles> {
 	
 	/**Met à jour un article de la bdd**/
 	@Override
-	public boolean update(Articles a) {
+	public boolean update(MODEL<?> a) {
 		int id = a.get_id();
 		String titre = a.get_titre();
 		String resume = a.get_resume();
@@ -92,6 +93,31 @@ public class ArticlesDAO extends DAO<Articles> {
 		}
 
 		return a;
+	}
+
+	@Override
+	public ArrayList<Articles> get_all() {
+		ArrayList<Articles> liste = new ArrayList<Articles>();
+		String Str = "SELECT * from articles";
+		Articles a = new Articles();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				a.set_id(result.getInt("id"));
+				a.set_titre(result.getString("titre"));
+				a.set_resume(result.getString("resume"));
+				a.set_contenu(result.getString("contenu"));
+				a.set_writer(result.getString("writer"));
+				a.set_cat(new CatDAO(new BDD()).find(result.getInt("cat")));
+				a.set_commentaires(result.getBoolean("commentaires"));
+				a.set_date(result.getDate("date"));
+				liste.add(a);
+				a = new Articles();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

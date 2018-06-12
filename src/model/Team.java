@@ -5,9 +5,10 @@ package model;
  * toString redéfinie
  * */
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import crypt.Crypt;
+import java.util.Iterator;
+import factory.MODELFactory;
 
 public class Team extends MODEL<Team> {
 	private int _id;
@@ -74,7 +75,7 @@ public class Team extends MODEL<Team> {
 	@Override
 	public String toString() {
 		return "id : " + _id + " nom : " + _nom + " pseudo : " + _pseudo + " mail : " + _mail + "\nrole :"
-				+ _role.toString();
+				+ _role.toString()+"\n mdp : "+_mdp;
 	}
 
 	@Override
@@ -288,8 +289,22 @@ public class Team extends MODEL<Team> {
 
 	@Override
 	public void set_mdp(String mdp) {
-		_mdp = Crypt.encrypted(mdp);
+		_mdp = mdp;
 
+	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		String pseudo = (String) o;
+		MODEL<?> m = MODELFactory.getTeam();
+		Iterator<?> i = liste.iterator();
+		while (i.hasNext()) {
+			m = (MODEL<?>) i.next();			
+			if (m.get_pseudo().equals(pseudo)) {
+				return m;
+			}
+		}
+		return null;
 	}
 
 }

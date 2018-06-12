@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.MODEL;
@@ -35,7 +36,7 @@ public class ParametresDAO extends DAO<Parametres> {
 
 	/** Supprime un parametre de la bdd **/
 	@Override
-	public boolean delete(Parametres p) {
+	public boolean delete(MODEL<?> p) {
 		int id = p.get_id();
 		String str = "delete from parametres where id=" + id;
 		try {
@@ -48,7 +49,7 @@ public class ParametresDAO extends DAO<Parametres> {
 
 	/** met à jour le parametre de la bdd **/
 	@Override
-	public boolean update(Parametres p) {
+	public boolean update(MODEL<?> p) {
 		int id = p.get_id();
 		String nom = p.get_nom();
 		String description = p.get_description();
@@ -83,6 +84,27 @@ public class ParametresDAO extends DAO<Parametres> {
 
 		}
 		return p;
+	}
+
+	@Override
+	public ArrayList<Parametres> get_all() {
+		ArrayList<Parametres> liste = new ArrayList<Parametres>();
+		String Str = "SELECT * from parametres";
+		Parametres p = new Parametres();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				p.set_id(result.getInt("id"));
+				p.set_nom(result.getString("nom"));
+				p.set_description(result.getString("description"));
+				p.set_theme(new ThemesDAO(new BDD()).find(result.getInt("theme")));
+				liste.add(p);
+				p = new Parametres();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

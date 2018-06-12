@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /* class object representant un commentaires de la bdd 
@@ -287,6 +288,12 @@ public class Commentaires extends MODEL<Commentaires>{
 	public void set_mdp(String mdp) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

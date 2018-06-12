@@ -1,5 +1,7 @@
 package model;
 
+
+import java.util.ArrayList;
 import java.util.Date;
 /* class object representant un article de la bdd 
  * comprenant son id, son contenu, la date.
@@ -286,5 +288,12 @@ public class Articles extends MODEL<Articles> {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

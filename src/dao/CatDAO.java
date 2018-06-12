@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import accessBDD.BDD;
 import model.Cat;
@@ -35,7 +36,7 @@ public class CatDAO extends DAO<Cat> {
 
 	/** Supprime une catégorie de la bdd **/
 	@Override
-	public boolean delete(Cat c) {
+	public boolean delete(MODEL<?> c) {
 		int id = c.get_id();
 		String str = "delete from cat where id=" + id;
 		try {
@@ -48,7 +49,7 @@ public class CatDAO extends DAO<Cat> {
 
 	/**Met à jour une catégorie de la bdd**/
 	@Override
-	public boolean update(Cat c) {
+	public boolean update(MODEL<?> c) {
 		int id = c.get_id();
 		String nom = c.get_nom();
 		int ordre = c.get_ordre();
@@ -81,6 +82,26 @@ public class CatDAO extends DAO<Cat> {
 
 		}
 		return c;
+	}
+
+	@Override
+	public ArrayList<Cat> get_all() {
+		ArrayList<Cat> liste = new ArrayList<Cat>();
+		String Str = "SELECT * from cat";
+		Cat c = new Cat();
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				c.set_id(result.getInt("id"));
+				c.set_nom(result.getString("nom"));
+				c.set_ordre(result.getInt("ordre"));
+				liste.add(c);
+				c = new Cat();
+			}
+		} catch (SQLException e) {
+
+		}
+		return liste;
 	}
 
 }

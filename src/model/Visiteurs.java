@@ -5,6 +5,7 @@ package model;
  * toString redéfinie
  * */
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import crypt.Crypt;
@@ -291,6 +292,12 @@ public class Visiteurs extends MODEL<Visiteurs>{
 	public void set_mdp(String mdp) {
 		_mdp = Crypt.encrypted(mdp);
 		
+	}
+
+	@Override
+	public MODEL<?> verify(ArrayList<?> liste, Object o) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
