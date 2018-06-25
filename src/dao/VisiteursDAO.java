@@ -84,7 +84,7 @@ public class VisiteursDAO extends DAO<Visiteurs> {
 	@Override
 	public ArrayList<Visiteurs> get_all() {
 		ArrayList<Visiteurs> liste = new ArrayList<Visiteurs>();
-		String Str = "SELECT * from articles";
+		String Str = "SELECT * from visiteur";
 		Visiteurs v = new Visiteurs();
 		try {
 			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
@@ -100,6 +100,36 @@ public class VisiteursDAO extends DAO<Visiteurs> {
 
 		}
 		return liste;
+	}
+
+	@Override
+	public boolean mod(MODEL<?> obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Visiteurs find_courant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset_courant() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

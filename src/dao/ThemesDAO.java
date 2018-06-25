@@ -22,7 +22,8 @@ public class ThemesDAO extends DAO<Themes> {
 	public boolean create(MODEL<?> t) {
 		String nom = t.get_nom();
 		String path = t.get_path();
-		String str = "insert into theme values(NULL,'" + nom + "','" + path + "')";
+		boolean courant = t.is_courant();
+		String str = "insert into theme values(NULL,'" + nom + "','" + path + "','" + courant + ")";
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
 			return true;
@@ -50,7 +51,8 @@ public class ThemesDAO extends DAO<Themes> {
 		int id = t.get_id();
 		String nom = t.get_nom();
 		String path = t.get_path();
-		String str = "update theme set nom='" + nom + "', path='" + path + "' where id=" + id;
+		boolean courant = t.is_courant();
+		String str = "update theme set nom='" + nom + "', path='" + path +"', courant=" + courant + " where id=" + id;
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -71,6 +73,7 @@ public class ThemesDAO extends DAO<Themes> {
 				t.set_id(result.getInt("id"));
 				t.set_nom(result.getString("nom"));
 				t.set_path(result.getString("path"));
+				t.set_courant(result.getBoolean("courant"));
 			}
 		} catch (SQLException e) {
 
@@ -89,6 +92,7 @@ public class ThemesDAO extends DAO<Themes> {
 				t.set_id(result.getInt("id"));
 				t.set_nom(result.getString("nom"));
 				t.set_path(result.getString("path"));
+				t.set_courant(result.getBoolean("courant"));
 				liste.add(t);
 				t = new Themes();
 			}
@@ -96,6 +100,49 @@ public class ThemesDAO extends DAO<Themes> {
 
 		}
 		return liste;
+	}
+
+	@Override
+	public boolean mod(MODEL<?> obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Themes find_courant() {
+		Themes t = new Themes();
+		String Str = "SELECT * from theme where courant=1";
+		try {
+			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
+			while (result.next()) {
+				t.set_id(result.getInt("id"));
+				t.set_nom(result.getString("nom"));
+				t.set_path(result.getString("path"));
+				t.set_courant(result.getBoolean("courant"));
+			}
+		} catch (SQLException e) {
+
+		}
+		return t;
+	}
+
+	@Override
+	public void reset_courant() {
+		Themes t= find_courant();		
+		t.set_courant(false);
+		update(t);
 	}
 
 }

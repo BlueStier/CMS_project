@@ -19,6 +19,7 @@ public class Articles extends MODEL<Articles> {
 	private Cat _cat;	
 	private Date _date;
 	private boolean _commentaires;
+	private boolean _visible;
 
 	public Articles() {
 
@@ -106,7 +107,7 @@ public class Articles extends MODEL<Articles> {
 	
 	@Override
 	public String toString() {
-		return "id : "+_id+"   titre : "+_titre+"   résumé : "+_resume+"   contenu : "+_contenu+"   writer : "+_writer+"   \ncat : "+_cat.toString()+"  date : "+_date+"  commentaires :"+_commentaires;
+		return "id : "+_id+"   titre : "+_titre+"   résumé : "+_resume+"   contenu : "+_contenu+"   writer : "+_writer+"   \ncat : "+_cat.toString()+"  date : "+_date+"  commentaires :"+_commentaires+" visible : "+_visible;
 	}
 
 	@Override
@@ -293,6 +294,77 @@ public class Articles extends MODEL<Articles> {
 	public MODEL<?> verify(ArrayList<?> liste, Object o) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean is_visible() {		
+		return _visible;
+	}
+
+	@Override
+	public void set_visible(boolean v) {
+		_visible = v;
+		
+	}
+
+	@Override
+	public boolean is_ajout_role() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_role(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_visiteur() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_visiteur(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_param() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_param(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_cat() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_cat(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_courant() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_courant(boolean aa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -107,4 +107,34 @@ public class ParametresDAO extends DAO<Parametres> {
 		return liste;
 	}
 
+	@Override
+	public boolean mod(MODEL<?> obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Parametres find_courant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset_courant() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

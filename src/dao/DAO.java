@@ -38,6 +38,14 @@ public abstract class DAO<T> {
 	 * @return boolean
 	 */
 	public abstract boolean update(MODEL<?> obj);
+	
+	/**
+	 * Méthode de mise à jour de la modération pour les commentaires
+	 * 
+	 * @param obj
+	 * @return boolean
+	 */
+	public abstract boolean mod(MODEL<?> obj);
 
 	/**
 	 * Méthode de recherche des informations
@@ -47,6 +55,29 @@ public abstract class DAO<T> {
 	 */
 	public abstract T find(int id);
 	
+	/**
+	 * Méthode de changement d'ordre
+	 * 
+	 * @param id
+	 * @return T
+	 */
+	public abstract boolean upOrDown(int id, boolean up);
+	
+	/**
+	 * Méthode de changement d'ordre si suppression de cat
+	 * 
+	 * @param id
+	 * @return T
+	 */
+	public abstract boolean asc(int id);
+	
+	/**
+	 * Méthode retrouvant le thème courant
+	 * 
+	 * @param id
+	 * @return T
+	 */
+	public abstract T find_courant();
 	
 	/**
 	 * Méthode de recherche de tous les objects de la bdd
@@ -55,4 +86,12 @@ public abstract class DAO<T> {
 	 * @return T
 	 */
 	public abstract ArrayList<T> get_all();
+	
+	/**
+	 * Méthode de recherche de tous les objects de la bdd
+	 * 
+	 * @param id
+	 * @return T
+	 */
+	public abstract void reset_courant();
 }

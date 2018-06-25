@@ -66,6 +66,19 @@ public class CommentairesDAO extends DAO<Commentaires> {
 			return false;
 		}
 	}
+	
+	public boolean mod(MODEL<?> c) {
+		int id = c.get_id();		
+		boolean mod = c.is_mod();
+		String str = "update commentaires set moderateur=" + mod + " where id=" + id;
+
+		try {
+			this._connection.getInstance().createStatement().executeUpdate(str);
+			return true;
+		} catch (SQLException e) {
+			return false;
+		}
+	}
 
 	/*
 	 * trouve le commentaire dans la bdd qui correspond à l'id passé en
@@ -95,24 +108,47 @@ public class CommentairesDAO extends DAO<Commentaires> {
 	@Override
 	public ArrayList<Commentaires> get_all() {
 		ArrayList<Commentaires> liste = new ArrayList<Commentaires>();
-		String Str = "SELECT * from commentaires";
+		String Str = "SELECT * from commentaires order by moderateur DESC";
 		Commentaires com = new Commentaires();
 		try {
 			ResultSet result = this._connection.getInstance().createStatement().executeQuery(Str);
-			while (result.next()) {
-				com.set_id(result.getInt("id"));
-				com.set_contenu(result.getString("contenu"));
-				com.set_date(result.getDate("date"));
-				com.set_article(new ArticlesDAO(new BDD()).find(result.getInt("article")));
-				com.set_visiteur(new VisiteursDAO(new BDD()).find(result.getInt("visiteur")));
-				com.set_mod(result.getBoolean("mod"));
-				liste.add(com);
+			while (result.next()) {				
+				com.set_id(result.getInt("id"));				
+				com.set_contenu(result.getString("contenu"));				
+				com.set_date(result.getDate("date"));				
+				com.set_article(new ArticlesDAO(new BDD()).find(result.getInt("article")));				
+				com.set_visiteur(new VisiteursDAO(new BDD()).find(result.getInt("visiteur")));			
+				com.set_mod(result.getBoolean("moderateur"));				
+				liste.add(com);	
 				com = new Commentaires();
 			}
 		} catch (SQLException e) {
-
-		}
+			}
 		return liste;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Commentaires find_courant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset_courant() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

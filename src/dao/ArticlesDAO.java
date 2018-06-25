@@ -26,8 +26,9 @@ public class ArticlesDAO extends DAO<Articles> {
 		String writer = a.get_writer();
 		int cat = a.get_cat().get_id();
 		boolean com = a.is_commentaires();
+		boolean v = a.is_visible();
 		String str = "insert into articles values(NULL,'" + titre + "','" + resume + "','" + contenu + "',NOW(),'"
-				+ writer + "'," + cat + "," + com + ")";
+				+ writer + "'," + cat + "," + com + ","+v+")";
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -60,8 +61,9 @@ public class ArticlesDAO extends DAO<Articles> {
 		String writer = a.get_writer();
 		int cat = a.get_cat().get_id();
 		boolean com = a.is_commentaires();
+		boolean v = a.is_visible();
 		String str = "update articles set titre='" + titre + "', resume='" + resume + "', contenu='" + contenu
-				+ "', writer='" + writer + "', date=NOW(), cat=" + cat + ", commentaires="+com+" where id="+id;
+				+ "', writer='" + writer + "', date=NOW(), cat=" + cat + ", commentaires="+com+", visible="+v+" where id="+id;
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -86,6 +88,7 @@ public class ArticlesDAO extends DAO<Articles> {
 				a.set_writer(result.getString("writer"));
 				a.set_cat(new CatDAO(new BDD()).find(result.getInt("cat")));
 				a.set_commentaires(result.getBoolean("commentaires"));
+				a.set_visible(result.getBoolean("visible"));
 				a.set_date(result.getDate("date"));
 			}
 		} catch (SQLException e) {
@@ -110,6 +113,7 @@ public class ArticlesDAO extends DAO<Articles> {
 				a.set_writer(result.getString("writer"));
 				a.set_cat(new CatDAO(new BDD()).find(result.getInt("cat")));
 				a.set_commentaires(result.getBoolean("commentaires"));
+				a.set_visible(result.getBoolean("visible"));
 				a.set_date(result.getDate("date"));
 				liste.add(a);
 				a = new Articles();
@@ -118,6 +122,36 @@ public class ArticlesDAO extends DAO<Articles> {
 
 		}
 		return liste;
+	}
+
+	@Override
+	public boolean mod(MODEL<?> obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up){
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Articles find_courant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset_courant() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -296,4 +296,76 @@ public class Parametres extends MODEL<Parametres>{
 		return null;
 	}
 
+	@Override
+	public boolean is_visible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_visible(boolean v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_role() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_role(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_visiteur() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_visiteur(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_param() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_param(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_ajout_cat() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_ajout_cat(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean is_courant() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_courant(boolean aa) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

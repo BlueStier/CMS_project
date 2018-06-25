@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Bootstrap core CSS -->
-<link href="ressources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="ressources/theme1/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- Custom fonts for this template -->
-<link href="ressources/vendor/font-awesome/css/font-awesome.min.css"
+<link href="ressources/theme1/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
@@ -18,14 +18,14 @@
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
 <link rel="shortcut icon" type="image"
-	href="ressources/img/Flav_Quizz.png">
+	href="ressources/theme1/img/Flav_Quizz.png">
 
 <!-- Plugin CSS -->
-<link href="ressources/vendor/magnific-popup/magnific-popup.css"
+<link href="ressources/theme1/vendor/magnific-popup/magnific-popup.css"
 	rel="stylesheet" type="text/css">
 
 <!-- Custom styles for this template -->
-<link href="ressources/css/freelancer.min.css" rel="stylesheet">
+<link href="ressources/theme1/css/freelancer.min.css" rel="stylesheet">
 <title>CMS_project</title>
 </head>
 <body id="page-top">
@@ -33,8 +33,8 @@
 	<h1 class="text-uppercase mb-0">CMS_project</h1>
 	<br>
 	<br>
-	<h2 class="font-weight-light mb-0">Bienvenu sur le CMS qui déchire
-		!!!</h2>
+	<h2 class="font-weight-light mb-0">CMS by BlueStier
+		</h2>
 	</header>
 	<h2 class="text-center text-uppercase text-secondary mb-0">Entrez votre 
 		Pseudo et votre mot de passe svp</h2>

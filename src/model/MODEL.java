@@ -28,7 +28,7 @@ public abstract class MODEL<T> {
 
 	public abstract Cat get_cat();
 
-	public abstract void set_cat(Cat c);
+	public abstract void set_cat(Cat ca);
 
 	public abstract Date get_date();
 
@@ -99,6 +99,30 @@ public abstract class MODEL<T> {
 	public abstract String get_mdp();
 
 	public abstract void set_mdp(String mdp);
-	
+
 	public abstract MODEL<?> verify(ArrayList<?> liste, Object o);
+
+	public abstract boolean is_visible();
+
+	public abstract void set_visible(boolean v);
+
+	public abstract boolean is_ajout_role();
+
+	public abstract void set_ajout_role(boolean aa);
+
+	public abstract boolean is_ajout_visiteur();
+
+	public abstract void set_ajout_visiteur(boolean aa);
+
+	public abstract boolean is_ajout_param();
+
+	public abstract void set_ajout_param(boolean aa);
+
+	public abstract boolean is_ajout_cat();
+
+	public abstract void set_ajout_cat(boolean aa);
+	
+	public abstract boolean is_courant();
+
+	public abstract void set_courant(boolean aa);
 }

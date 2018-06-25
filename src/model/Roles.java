@@ -9,13 +9,17 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Roles extends MODEL<Roles>{
+public class Roles extends MODEL<Roles> {
 	private int _id;
 	private String _nom;
 	private boolean _ajout_users;
 	private boolean _moderateur;
 	private boolean _ajout_themes;
 	private boolean _ajout_articles;
+	private boolean _ajout_role;
+	private boolean _ajout_visiteur;
+	private boolean _ajout_param;
+	private boolean _ajout_cat;
 
 	public Roles() {
 
@@ -80,10 +84,11 @@ public class Roles extends MODEL<Roles>{
 	public void set_ajout_articles(boolean _ajout_articles) {
 		this._ajout_articles = _ajout_articles;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "id : "+_id+"   nom : "+_nom+"   ajout users : "+_ajout_users+"   ajout themes : "+_ajout_themes+"   ajout articles : "+_ajout_articles+"   modérateur : "+_moderateur;
+		return "id : " + _id + "   nom : " + _nom + "   ajout users : " + _ajout_users + "   ajout themes : "
+				+ _ajout_themes + "   ajout articles : " + _ajout_articles + "   modérateur : " + _moderateur;
 	}
 
 	@Override
@@ -95,7 +100,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_titre(String t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -107,7 +112,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_resume(String r) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -119,7 +124,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_contenu(String c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -131,7 +136,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_writer(String w) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -143,7 +148,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_cat(Cat c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -155,7 +160,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_date(Date d) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -167,13 +172,13 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_commentaires(boolean c) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void set_ordre(int o) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -185,7 +190,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_article(Articles a) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -197,7 +202,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_visiteur(Visiteurs v) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -209,7 +214,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_theme(Themes t) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -221,7 +226,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_description(String d) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -239,7 +244,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_pseudo(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -251,7 +256,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_mail(String m) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -263,7 +268,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_role(Roles r) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -275,7 +280,7 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_path(String p) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -287,13 +292,83 @@ public class Roles extends MODEL<Roles>{
 	@Override
 	public void set_mdp(String mdp) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public MODEL<?> verify(ArrayList<?> liste, Object o) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean is_visible() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_visible(boolean v) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean is_ajout_role() {
+		return _ajout_role;
+	}
+
+	@Override
+	public void set_ajout_role(boolean aa) {
+		_ajout_role = aa;
+
+	}
+
+	@Override
+	public boolean is_ajout_visiteur() {
+
+		return _ajout_visiteur;
+	}
+
+	@Override
+	public void set_ajout_visiteur(boolean aa) {
+		_ajout_visiteur = aa;
+
+	}
+
+	@Override
+	public boolean is_ajout_param() {
+
+		return _ajout_param;
+	}
+
+	@Override
+	public void set_ajout_param(boolean aa) {
+		_ajout_param = aa;
+
+	}
+
+	@Override
+	public boolean is_ajout_cat() {		
+		return _ajout_cat;
+	}
+
+	@Override
+	public void set_ajout_cat(boolean aa) {
+		_ajout_cat=aa;
+		
+	}
+
+	@Override
+	public boolean is_courant() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void set_courant(boolean aa) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

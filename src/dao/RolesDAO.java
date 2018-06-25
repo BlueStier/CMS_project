@@ -25,8 +25,12 @@ public class RolesDAO extends DAO<Roles> {
 		boolean ajout_themes = r.is_ajout_themes();
 		boolean ajout_articles = r.is_ajout_articles();
 		boolean moderateur = r.is_mod();
+		boolean _ajout_role= r.is_ajout_role();
+		boolean _ajout_visiteur=r.is_ajout_visiteur();
+		boolean _ajout_param = r.is_ajout_param();
+		boolean _ajout_cat = r.is_ajout_cat();
 		String str = "insert into roles values(NULL,'" + nom + "'," + ajout_users + "," + ajout_themes + ","
-				+ ajout_articles + "," + moderateur + ")";
+				+ ajout_articles + "," + moderateur +","+_ajout_role+","+_ajout_visiteur+","+_ajout_param+","+_ajout_cat+ ")";
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -59,8 +63,12 @@ public class RolesDAO extends DAO<Roles> {
 		boolean moderateur = r.is_mod();
 		boolean ajout_themes = r.is_ajout_themes();
 		boolean ajout_articles = r.is_ajout_articles();
+		boolean _ajout_role= r.is_ajout_role();
+		boolean _ajout_visiteur=r.is_ajout_visiteur();
+		boolean _ajout_param = r.is_ajout_param();
+		boolean _ajout_cat = r.is_ajout_cat();
 		String str = "update roles set nom='" + nom + "', ajout_users=" + ajout_users + ", ajout_themes=" + ajout_themes
-				+ ", ajout_articles=" + ajout_articles + ", moderateur=" + moderateur + " where id=" + id;
+				+ ", ajout_articles=" + ajout_articles + ", moderateur=" + moderateur +", ajout_role=" + _ajout_role +", ajout_visiteur=" + _ajout_visiteur +", ajout_param=" + _ajout_param +", ajout_cat="+_ajout_cat+ " where id=" + id;
 
 		try {
 			this._connection.getInstance().createStatement().executeUpdate(str);
@@ -84,6 +92,10 @@ public class RolesDAO extends DAO<Roles> {
 				r.set_ajout_themes(result.getBoolean("ajout_themes"));
 				r.set_ajout_users(result.getBoolean("ajout_users"));
 				r.set_mod(result.getBoolean("moderateur"));
+				r.set_ajout_role(result.getBoolean("ajout_role"));
+				r.set_ajout_visiteur(result.getBoolean("ajout_visiteur"));
+				r.set_ajout_param(result.getBoolean("ajout_param"));
+				r.set_ajout_cat(result.getBoolean("ajout_cat"));
 			}
 		} catch (SQLException e) {
 
@@ -105,6 +117,10 @@ public class RolesDAO extends DAO<Roles> {
 				r.set_ajout_themes(result.getBoolean("ajout_themes"));
 				r.set_ajout_users(result.getBoolean("ajout_users"));
 				r.set_mod(result.getBoolean("moderateur"));
+				r.set_ajout_role(result.getBoolean("ajout_role"));
+				r.set_ajout_visiteur(result.getBoolean("ajout_visiteur"));
+				r.set_ajout_param(result.getBoolean("ajout_param"));
+				r.set_ajout_cat(result.getBoolean("ajout_cat"));
 				liste.add(r);
 				r = new Roles();
 			}
@@ -112,6 +128,36 @@ public class RolesDAO extends DAO<Roles> {
 
 		}
 		return liste;
+	}
+
+	@Override
+	public boolean mod(MODEL<?> obj) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean upOrDown(int id, boolean up) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean asc(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Roles find_courant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset_courant() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
